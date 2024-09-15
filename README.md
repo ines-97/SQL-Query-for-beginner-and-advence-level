@@ -112,3 +112,116 @@ Mais elle n’est pas fonctionnel en PostgreSQL.
         - id  présente le nom et le prénom et le clé étranger de job.
     
      ****
+
+
+
+  # 3. Les tables
+
+- **La requête  Create Table**
+    
+    Create table ****: créer une table dans une base de données
+    
+    le syntaxe:
+    
+    **Creat Table non_base**
+    
+    **( “colonne” type,**
+    
+    **“colonne” type);**
+    
+    ```sql
+    create table anime1( id INT PRIMARY KEY NOT NULL , nom  numeric);
+    ```
+    
+    - **NOT NULL** : empêche d’enregistrer une valeur nulle pour une colonne.
+    - **PRIMARY KEY** : indiquer si cette colonne est considérée comme clé primaire pour un index.
+- **La requête  Alter Table**
+    
+    **Alter table** : ajouter, modifier , supprimer la colonne une table
+    
+    le syntaxe:
+    
+    **Ajouter une colonne**
+    
+    **Alter Table non_base ADD colonne1 type;**
+    
+    ```sql
+    alter table public."Test" add "pays" varchar(20); /*la resultat de la colonne ajouter est par defaut null;*/
+    ```
+    
+    **Modifier le type d’une colonne**    2 requêtes sont corrects
+    
+    **Alter table non_table ALTER COLUMN nom_colonne TYPE type;** /*PostergreSQL*
+    
+    **Alter table nom_table  Modify  nom_colonne   type;** /*Mysql*
+    
+    ```sql
+    alter table public."Test" alter column "pays"  type char(2); /* changer le type de varchar (20) a char (2)*/
+    ```
+    
+    **Supprimer une colonne** 2 requêtes sont corrects
+    
+    **Alter table nom_table   Drop COLUMN nom_colonne;**   
+    
+    **Alter table nom_table  Drop nom_colonne;**
+    
+    ```sql
+    alter table public."Test" drop  "pays";
+    alter table public."Test" drop column "pays"; /* les requêtes sa marchent
+    ```
+    
+    **Renommer la colonne**
+    
+    **Alter table nom_table    Rename COLUMN ancien_colonne   TO    nouvelle_colonne ;** /*postgresql*/
+    
+    **Alter table nom_table   change   ancien_colonne      nouvelle_colonne    type ;** /*Mysql*/
+    
+    ```sql
+    alter table public."Test" rename column "pays" to "pay1";
+    ```
+    
+- **La requête  TRUNCATE TABLE**
+    
+    **Truncate table** : permet de vider la table sans la supprimer en gardant la structure de la table.
+    
+    le syntaxe:
+    
+    **Truncate table ‘non_table’**
+    
+    vider la table Data
+    
+    ```sql
+    Truncate table public."Data1";
+    ```
+    
+- **La requête  Drop Table**
+    
+    Create Database ****: supprime la table
+    
+    le syntaxe:
+    
+    **Drop table non_base;**
+    
+    ```sql
+    DROP table  "anime";
+    ```
+    
+- **Les schema**
+    
+    1.creation du schema
+    
+    ```sql
+    CREATE SCHEMA "VENTE_ODS";
+    ```
+    
+    2.utiliser le schema 
+    
+    ```sql
+    SET SEARCH_PATH = "VENTE_ODS";
+    ```
+    
+    3.suppression du schema
+
+    ```sql
+    DROP SCHEMA  "VENTE_ODS";
+    ```
