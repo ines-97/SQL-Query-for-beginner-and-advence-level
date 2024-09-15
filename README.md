@@ -225,3 +225,98 @@ Mais elle n’est pas fonctionnel en PostgreSQL.
     ```sql
     DROP SCHEMA  "VENTE_ODS";
     ```
+
+
+
+
+
+# 4. Les clés
+
+- **La requête Clé primaire/Serial**
+    
+    ### 1. **clé primaire normale**
+    
+    **Serial**= Auto_increment
+    
+    - Auto_increment n’existe pas en Postgresql
+    
+    sytaxe :
+    
+    **Create table(  `ID  SERIAL PRIMARY KEY`****, ..**
+    
+    ```sql
+    CREATE TABLE public."utilisateur" (
+    "id"  int PRIMARY KEY unique NOt Null,
+    "nom" VARCHAR(50),
+    "email" VARCHAR(50),
+    "date_inscription" DATE
+    );
+    ```
+    
+    ```sql
+    CREATE TABLE public."utilisateur" (
+    "id"  int ,
+    "nom" VARCHAR(50),
+    "email" VARCHAR(50),
+    "date_inscription" DATE
+    constraint pk_primarykey primary key (id) 
+    	  )
+    );
+    ```
+    
+    ### 2. Ajouter la colonne de clé primaire après la création de la table
+    
+    ```sql
+    alter table public."utilisateur" add id_id int serial primary key; --ajouter uen colonne de clé primaire
+    ```
+    
+    ### 3. clé primaire composite
+    
+    ```sql
+    CREATE TABLE MaTableComposite ( 
+        "id" INT , "autre_id" INT , PRIMARY KEY ("id", "autre_id")       -- un clé primaire composite
+    );
+    ```
+    
+- **La requête Clé étrangère**
+    
+    ### 1. **clé étrangère normale**
+    
+    sytaxe :
+    
+    ```sql
+    --Création de la table "Departements"
+    CREATE TABLE Departements (
+    **id_departement INT PRIMARY KEY,**  --clé  primaire
+    nom_departement VARCHAR(50)
+    );
+    ```
+    
+    ```sql
+    --Création de la table "Employes"
+    CREATE TABLE Employes (
+    id_employe INT PRIMARY KEY,
+    nom VARCHAR(50),
+    **id_departement INT,** -- Colonne pour créer la clé étrangère
+    **CONSTRAINT fk_id_departement FOREIGN KEY (id_departement) REFERENCES Departements(id_departement) -- la clé etrangère**
+    );
+    ```
+    
+    ### 2. Ajouter la colonne de **clé étrangère** après la création de la table
+    
+    ```sql
+    -- Ajout d'une clé étrangère à la table "Employes"
+    ALTER TABLE Employes ADD 
+    C**ONSTRAINT fk_id_departement FOREIGN KEY (id_departement) REFERENCES Departements(id_departement); -- même syntaxe que la clé étrangère normale**
+    ```
+    
+    ### 3. **clé étrangère** composite
+    
+    ```sql
+    CREATE TABLE Commandes (
+        numero_commande INT PRIMARY KEY,
+        id_client INT,
+        -- Clé étrangère composite
+        **CONSTRAINT fk_commande_client FOREIGN KEY (id_client, numero_commande) REFERENCES Clients(id_client, numero_commande) -- la clé etrangère composite**
+    );
+    ```
