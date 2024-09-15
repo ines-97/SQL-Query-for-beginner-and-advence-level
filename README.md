@@ -320,3 +320,65 @@ Mais elle n’est pas fonctionnel en PostgreSQL.
         **CONSTRAINT fk_commande_client FOREIGN KEY (id_client, numero_commande) REFERENCES Clients(id_client, numero_commande) -- la clé etrangère composite**
     );
     ```
+
+
+
+    # 5. Les fonctions
+
+- **Opérateurs de comparaisons**
+    
+    On peut utiliser plusieurs operateurs comme:
+    
+    - **=** → égale
+    
+    ```sql
+    SELECT * FROM public."Data1"  WHERE "id" **=** 20
+    ```
+    
+    - **<>** → pas égale
+    
+    ```sql
+    SELECT * FROM public."Data1"  WHERE "id" **<>** 20
+    ```
+    
+    - **!=** → pas égale
+    
+    ```sql
+    SELECT * FROM public."Data1"  WHERE "id" **!=** 20
+    ```
+    
+    - **Is** **Not Null** → champ n’est pas nulle
+    
+    ```sql
+    SELECT * FROM public."Data1"  WHERE "Model" **is not null**;
+    ```
+    
+    - **IS Null** → champ est nulle
+    
+    ```sql
+    SELECT * FROM public."Data1"  WHERE "Body Type" **is null**;
+    ```
+    
+    - **>**  ou  **<** → supérieur à   ou    inférieur à
+    - **>=**  ou  **<=** → supérieur ou égale à   ou    inférieur ou égale à
+        
+        ```sql
+        SELECT * from public."Test" where "prix" <= '3000'
+        ```
+        
+    - **Between / IN / And / Or / Like / ALL / Exists / NOT / AND / OR :** ce sont des operateurs de comparaison expliquer par la suite.
+    - **Not** → champ n’est pas égale
+    
+    ```sql
+    SELECT * FROM Customers
+    WHERE City **NOT LIKE** 's%';
+    ```
+    
+    - 
+    
+    | **+** | **Add** |
+    | --- | --- |
+    | - | **Subtract** |
+    | * | **Multiply** |
+    | / | **Divide** |
+    | **%** | **Modulo** |
