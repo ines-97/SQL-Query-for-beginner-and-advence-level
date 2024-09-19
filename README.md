@@ -382,3 +382,40 @@ Mais elle n’est pas fonctionnel en PostgreSQL.
     | * | **Multiply** |
     | / | **Divide** |
     | **%** | **Modulo** |
+On peut utiliser plusieurs operateurs comme:
+
+- **Count() →** compter le nombre des lignes
+    
+    sytaxe: `SELECT COUNT(*) FROM table`
+    
+    `SELECT COUNT(**DISTINCT** nom_colonne) FROM table`
+    
+
+```sql
+select count(*) from public."Data1"
+```
+
+- **AVG()** → calculer la moyenne
+    - avg est valable pour les nombres et les reéls. mais il n’existe pas pour les colonnes de type money
+
+```sql
+select  **avg**(" Passengers") from public."Data1"(" Passengers") from public."Data1"
+```
+
+- **SUM()** → faire la somme
+
+```sql
+select **sum**(" Passengers") from public."Data1"
+```
+
+- **Max** → la valeur maximal
+
+```sql
+select **max**(" Passengers") from public."Data1"
+```
+
+- **Min** → La valeur minimal
+
+```sql
+select **min**(" Passengers") from public."Data1"
+```
