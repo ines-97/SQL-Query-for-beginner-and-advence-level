@@ -430,3 +430,15 @@ select **min**(" Passengers") from public."Data1"
 > SELECT * FROM `ville` **ORDER BY RAND()**
 > ```
 >
+
+- Rand() Dans les bases il retourne un résultat aléatoire entre 0 et 1
+- syntaxe: **select RAND() →   0.33597**
+- **Select RAND()*10 → 0 à 10 avec virgule**
+
+> Si on veut retourner une resultat aléatoire on paut utiliser RAND() avec ORDER BY :
+> 
+> 
+> ```sql
+> SELECT * FROM `ville` **ORDER BY RAND()**
+> ```
+>
