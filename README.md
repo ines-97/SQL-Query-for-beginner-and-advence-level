@@ -526,3 +526,23 @@ select **min**(" Passengers") from public."Data1"
                 SELECT "id"  FROM public."Data1"
                 WHERE "Model"='911' **Or** "Model" ='Taycan' **OR** "Model" = 'Corvette';
                 ```
+- **L’operateur Between**
+    - Afficher les résultats qui contiennent un des valeurs existants entre les 2 valeurs.
+        - NB: certains SGBD incluent les valeurs 1 et 2 dans la résultats, d’autres l’excluent.
+        
+        Le syntaxe de la requête est:   **Where + colonne + Between +  valeur1 + AND + valeur2**
+        
+        ```sql
+        select "id", "Model" , " Doors", "Make" from public."Data1" where "id" **between 3 and 8  ;**
+        ```
+        
+        
+        - **Between** → Valeur comprise dans un intervalle donnée **(utile pour les nombres ou dates)**
+        
+        ```sql
+        SELECT * from public."Test" where "prix" **Between** '3000' **and** '20000'
+        ```
+        
+        ```sql
+        SELECT * FROM utilisateur WHERE date_inscription **BETWEEN** ‘2012-04-01’ **AND** ‘2012-04-20’
+        ```
