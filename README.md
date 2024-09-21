@@ -442,3 +442,27 @@ select **min**(" Passengers") from public."Data1"
 > SELECT * FROM `ville` **ORDER BY RAND()**
 > ```
 >
+
+- **Les fonctions ROUND()**
+    - Round() retourne l’arrondir le nombre généré et retourne un entier
+    - select **ROUND(9.5554) → il retourne 10**
+    
+    Si on veut retourner une résultat avec plusieurs chiffres après la virgule.
+    
+    - Syntaxe :  **select ROUND(colonne, 3) from  table**
+    
+    > afficher 3 chiffres après la virgule.
+    > 
+    > 
+    > ```sql
+    > select round("prix",3) from public."Test"; --  trois chiffres après la virgule :218.364
+    > ```
+    > 
+    
+    Syntaxe **select ROUND(colonne,-1) from table**
+    
+     1Afficher les valeurs des résultats arrondit à **la dizaine(10,20, .. ,500)**
+    
+    ```sql
+     select round("prix",-1) from public."Test"; --  218.364 devient 220
+    ```
