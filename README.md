@@ -466,3 +466,63 @@ select **min**(" Passengers") from public."Data1"
     ```sql
      select round("prix",-1) from public."Test"; --  218.364 devient 220
     ```
+
+- **Traiter plusieurs conditions.**
+    - **L’operateur AND / OR**
+        - **permet de traiter plusieurs conditions.**
+        
+        Le syntaxe de la requête est:   **Where + condition1 + Or / And + conditions2** 
+        
+        ```sql
+        SELECT * from public."Test" where "prix" >= '3000' **and** "prix" <= '5000'
+        ```
+        
+        ```sql
+        SELECT * from public."Test" where "ville" = 'tunis' **or** "ville" like 'chine'
+        ```
+        
+        - Pour lister 3 et 4 conditions
+        
+        Afficher les les villes ‘TUNIS’ Ou  ‘tunis’ et le prix doit être =>200
+        
+        ```sql
+        SELECT * from public."Test" where "prix" >='200' /*condition1*/
+         **AND**  
+        ("ville" = 'TUNIS'  **OR**  "ville" like 'tunis' )/*condition combinée*/
+        ```
+        
+        ```sql
+        SELECT "id" ,"Model"," Drivetrain"," Doors" ," Transmission"   FROM public."Data1"
+        WHERE ( "Model" = 'RDX' **AND** " Drivetrain"='AWD' )/*condition combinée 1 */
+        **OR** 
+        ( " Doors" is null **AND** " Transmission" is null)/*condition combinée 2 */
+        ```
+        
+    - **L’operateur IN**
+        - Afficher les résultats qui contiennent un des valeurs existants dans la liste.
+        - **permet de traiter plusieurs conditions de la même colonne**
+            
+            Le syntaxe de la requête est:   **Where + colonne + IN + ( valeur1 , valeur2, valeur3 , valeur4 ..)** 
+            
+            - **IN** → ****liste des valeurs possibles, **dans cette requête il affiche les resultat des ville tunis et TUNIS**
+            
+            ```sql
+            SELECT * from public."Test" where "ville" **IN** ('tunis', 'TUNIS')/* 2 posibilité*/
+            ```
+            
+            ```sql
+            SELECT "id" ,"Model"," Drivetrain"," Doors" ," Transmission"   FROM public."Data1"
+            WHERE "Model" **IN** ('911','Taycan', 'Corvette','traverse','STS') /*une large liste*/
+            ```
+            
+            - la requête **IN** est la remplaçante de la requête **OR**
+                
+                ```sql
+                /*Avec  **IN*/**
+                SELECT "id"  FROM public."Data1"
+                WHERE "Model" **IN** ('911','Taycan', 'Corvette');
+                
+                /* Avec  **OR***/
+                SELECT "id"  FROM public."Data1"
+                WHERE "Model"='911' **Or** "Model" ='Taycan' **OR** "Model" = 'Corvette';
+                ```
